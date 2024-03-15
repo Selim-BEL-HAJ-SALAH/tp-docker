@@ -1,0 +1,227 @@
+
+    ============================
+        Content Test
+    ============================
+
+    Test sentence: "life is beautiful"
+
+    Sentiment (v1): {'username': 'alice', 'version': 'v1', 'sentence': 'life is beautiful', 'score': 0.5994}
+    Sentiment (v2): {'username': 'alice', 'version': 'v2', 'sentence': 'life is beautiful', 'score': 0.5994}
+    
+    ============================
+        Content Test
+    ============================
+
+    Test sentence: "life is beautiful"
+
+    Sentiment (v1): {'username': 'alice', 'version': 'v1', 'sentence': 'life is beautiful', 'score': 0.5994}
+    Sentiment (v2): {'username': 'alice', 'version': 'v2', 'sentence': 'life is beautiful', 'score': 0.5994}
+    
+    ============================
+        Content Test
+    ============================
+
+    Test sentence: "that sucks"
+
+    Sentiment (v1): {'username': 'alice', 'version': 'v1', 'sentence': 'that sucks', 'score': -0.3612}
+    Sentiment (v2): {'username': 'alice', 'version': 'v2', 'sentence': 'that sucks', 'score': -0.3612}
+    
+    ============================
+        Content Test
+    ============================
+
+    Test sentence: "that sucks"
+
+    Sentiment (v1): {'username': 'alice', 'version': 'v1', 'sentence': 'that sucks', 'score': -0.3612}
+    Sentiment (v2): {'username': 'alice', 'version': 'v2', 'sentence': 'that sucks', 'score': -0.3612}
+    
+    ============================
+        Authorization Test
+    ============================
+
+    Request made at "/v1/sentiment"
+    | username="alice"
+    | password="wonderland"
+    | model_version="1"
+
+    Expected result = 200
+    Actual result = 200
+
+    ==>  SUCCESS
+    
+    ============================
+        Authorization Test
+    ============================
+
+    Request made at "/v1/sentiment"
+    | username="alice"
+    | password="wonderland"
+    | model_version="1"
+
+    Expected result = 200
+    Actual result = 200
+
+    ==>  SUCCESS
+    
+    ============================
+        Authorization Test
+    ============================
+
+    Request made at "/v2/sentiment"
+    | username="alice"
+    | password="wonderland"
+    | model_version="2"
+
+    Expected result = 200
+    Actual result = 200
+
+    ==>  SUCCESS
+    
+    ============================
+        Authorization Test
+    ============================
+
+    Request made at "/v2/sentiment"
+    | username="alice"
+    | password="wonderland"
+    | model_version="2"
+
+    Expected result = 200
+    Actual result = 200
+
+    ==>  SUCCESS
+    
+    ============================
+        Authorization Test
+    ============================
+
+    Request made at "/v1/sentiment"
+    | username="bob"
+    | password="builder"
+    | model_version="1"
+
+    Expected result = 200
+    Actual result = 200
+
+    ==>  SUCCESS
+    
+    ============================
+        Authorization Test
+    ============================
+
+    Request made at "/v1/sentiment"
+    | username="bob"
+    | password="builder"
+    | model_version="1"
+
+    Expected result = 200
+    Actual result = 200
+
+    ==>  SUCCESS
+    
+    ============================
+        Authorization Test
+    ============================
+
+    Request made at "/v2/sentiment"
+    | username="bob"
+    | password="builder"
+    | model_version="2"
+
+    Expected result = 200
+    Actual result = 403
+
+    ==>  FAILURE
+    
+    ============================
+        Authorization Test
+    ============================
+
+    Request made at "/v2/sentiment"
+    | username="bob"
+    | password="builder"
+    | model_version="2"
+
+    Expected result = 200
+    Actual result = 403
+
+    ==>  FAILURE
+    
+        ============================
+            Authentication Test
+        ============================
+
+        Request made at "/permissions"
+        | username="alice"
+        | password="wonderland"
+
+        Expected result = 200
+        Actual result = 200
+
+        ==>  SUCCESS
+        
+        ============================
+            Authentication Test
+        ============================
+
+        Request made at "/permissions"
+        | username="alice"
+        | password="wonderland"
+
+        Expected result = 200
+        Actual result = 200
+
+        ==>  SUCCESS
+        
+        ============================
+            Authentication Test
+        ============================
+
+        Request made at "/permissions"
+        | username="bob"
+        | password="builder"
+
+        Expected result = 200
+        Actual result = 200
+
+        ==>  SUCCESS
+        
+        ============================
+            Authentication Test
+        ============================
+
+        Request made at "/permissions"
+        | username="bob"
+        | password="builder"
+
+        Expected result = 200
+        Actual result = 200
+
+        ==>  SUCCESS
+        
+        ============================
+            Authentication Test
+        ============================
+
+        Request made at "/permissions"
+        | username="clementine"
+        | password="mandarine"
+
+        Expected result = 200
+        Actual result = 403
+
+        ==>  FAILURE
+        
+        ============================
+            Authentication Test
+        ============================
+
+        Request made at "/permissions"
+        | username="clementine"
+        | password="mandarine"
+
+        Expected result = 200
+        Actual result = 403
+
+        ==>  FAILURE
+        

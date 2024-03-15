@@ -1,0 +1,20 @@
+######################
+#Fichier api_test.log avec le compte-rendu de tous les tests:
+On doit s'assurer que le fichier `api_test.log` existe dans le répertoire où l'on exécute la commande `docker-compose up`. Si le fichier n'existe pas, il faut le créer manuellement avant de lancer Docker Compose. Cela peut être réalisé en créant un fichier vide ou en utilisant toute autre méthode pour générer le fichier requis, en fonction des besoins de l'application ou du service exécuté dans le conteneur Docker. Une fois que le fichier `api_test.log` est en place dans le bon répertoire, Docker Compose peut être démarré pour lancer les services associés.
+
+-> sudo touch api_test.log
+
+######################
+#Dockerfile
+L'utilisation de l'image python:3.8-alpine permet de créer des images Docker plus légères, plus sécurisées et plus efficaces, tout en fournissant un environnement Python stable et fonctionnel pour le développement et le déploiement d'applications.
+Les images basées sur Alpine sont significativement plus petites que celles basées sur d'autres distributions, ce qui les rend idéales pour réduire la taille globale de l'image Docker. Cela peut être crucial pour les déploiements distribués, où la taille des images peut influencer la performance et l'efficacité de la plate-forme.
+
+######################
+#Docker Compose 
+Le choix d'utiliser Docker Compose avec des volumes liés pour stocker les journaux de test sur le système hôte est justifié par la nécessité d'accéder facilement aux journaux générés par les tests sans avoir à accéder directement aux conteneurs Docker. Cela facilite le débogage et l'analyse des résultats des tests. De plus, l'utilisation de volumes permet de persister les données même lorsque les conteneurs sont détruits ou redémarrés, ce qui est essentiel pour conserver l'historique des tests.
+
+L'utilisation du nom de service `api` offre une flexibilité et une portabilité accrues en rendant le fichier YAML indépendant de l'adresse IP du service, simplifiant ainsi la gestion des changements de réseau et de conteneurs. Les noms de service facilitent la gestion des connexions entre services, rendent la configuration plus lisible, et peuvent être utilisés de manière transparente pour atteindre plusieurs instances répliquées du service api, favorisant la réplication et la scalabilité. En outre, cette approche privilégie la simplicité en simplifiant la configuration et la maintenance du fichier YAML.
+
+La commande `depends_on` dans Docker Compose définit l'ordre de démarrage des services en spécifiant les dépendances entre eux. Elle garantit que les services dépendants ne démarrent pas avant que les services requis ne soient opérationnels, mais ne garantit pas leur disponibilité complète. Utiliser `depends_on` permet de mieux gérer les dépendances entre les services lors du déploiement d'applications multi-conteneurs.
+
+Les volumes Docker sont configurés pour chaque service de test, liant le fichier "api_test.log" du système hôte au chemin "/app/api_test.log" dans le conteneur correspondant. Cette configuration permet de stocker les journaux de test générés par les scripts Python de manière accessible depuis le système hôte. Le choix d'utiliser Docker Compose avec des volumes liés est motivé par la nécessité d'accéder facilement aux journaux de test sans accéder directement aux conteneurs, facilitant ainsi le débogage et l'analyse des résultats. De plus, l'utilisation de volumes garantit la persistance des données même en cas de destruction ou de redémarrage des conteneurs, assurant ainsi la conservation de l'historique des tests.

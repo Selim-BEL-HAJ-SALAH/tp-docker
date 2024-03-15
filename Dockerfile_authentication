@@ -1,0 +1,14 @@
+# Utilisation de l'image de base python:3.8-alpine
+FROM python:3.8-alpine
+
+# Définition du répertoire de travail dans le conteneur
+WORKDIR /app
+
+# Copie du fichier authentication_test.py depuis le contexte de construction vers le répertoire de travail du conteneur
+COPY authentication_test.py .
+
+# Installation ou mise à jour de pip et installation du module requests via pip
+RUN pip install --upgrade pip && pip install requests
+
+# Commande par défaut pour exécuter le script authentication_test.py lors du démarrage du conteneur
+CMD ["python", "authentication_test.py"]

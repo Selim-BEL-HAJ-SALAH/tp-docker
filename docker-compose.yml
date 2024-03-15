@@ -1,0 +1,61 @@
+# Définition de la version du format de configuration Docker Compose
+version: '3'
+
+# Configuration des services Docker Compose
+services:
+  
+  # Service API
+  api:
+    # Utilisation de l'image pre-built datascientest/fastapi:1.0.0
+    image: datascientest/fastapi:1.0.0
+    # Mapping des ports pour permettre l'accès à l'API via le port 8000 de l'hôte
+    ports:
+      - "8000:8000"
+
+  # Service de test d'authentification
+  authentication_test:
+    # Configuration pour construire l'image à partir du Dockerfile_authentication dans le contexte actuel
+    build:
+      context: .
+      dockerfile: Dockerfile_authentication
+    # Définition de variables d'environnement pour activer les logs
+    environment:
+      - LOG=1
+    # Dépendance du service sur le service API pour s'assurer qu'il est démarré avant
+    depends_on:
+      - api
+    # Montage du fichier api_test.log depuis l'hôte vers le conteneur
+    volumes:
+      - ./api_test.log:/app/api_test.log
+
+  # Service de test d'autorisation
+  authorization_test:
+    # Configuration pour construire l'image à partir du Dockerfile_authorization dans le contexte actuel
+    build:
+      context: .
+      dockerfile: Dockerfile_authorization
+    # Définition de variables d'environnement pour activer les logs
+    environment:
+      - LOG=1
+    # Dépendance du service sur le service API pour s'assurer qu'il est démarré avant
+    depends_on:
+      - api
+    # Montage du fichier api_test.log depuis l'hôte vers le conteneur
+    volumes:
+      - ./api_test.log:/app/api_test.log
+
+  # Service de test de contenu
+  content_test:
+    # Configuration pour construire l'image à partir du Dockerfile_content dans le contexte actuel
+    build:
+      context: .
+      dockerfile: Dockerfile_content
+    # Définition de variables d'environnement pour activer les logs
+    environment:
+      - LOG=1
+    # Dépendance du service sur le service API pour s'assurer qu'il est démarré avant
+    depends_on:
+      - api
+    # Montage du fichier api_test.log depuis l'hôte vers le conteneur
+    volumes:
+      - ./api_test.log:/app/api_test.log
